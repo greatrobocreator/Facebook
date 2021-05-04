@@ -1,7 +1,7 @@
 # Installation
 
 ```
-pytho3 -m pip install Flask
+pytho3 -m pip requirements.txt
 ```
 
 # Usage
