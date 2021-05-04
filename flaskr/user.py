@@ -17,10 +17,9 @@ def index():
 
 @bp.route('/id<int:id>')
 def user(id):
-    print('Get user with id: ', id)
     db = get_db()
     user = db.execute(
-        'SELECT username, about, avatar'
+        'SELECT id, username, about, avatar'
         ' FROM user u'
         ' WHERE u.id = ?',
         (id,)
@@ -32,7 +31,5 @@ def user(id):
         ' ORDER BY created DESC',
         (id,)
     ).fetchall()
-    print(user)
-    print(posts)
     return render_template('user/index.html', user=user, posts=posts)
     # return str(user['username'])
