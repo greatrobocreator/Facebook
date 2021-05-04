@@ -1,3 +1,7 @@
+# Installation
+
+pytho3 -m pip install Flask
+
 # Usage
 ### For Linux and Mac:
 
@@ -29,3 +33,12 @@ And now you are ready to start app:
 ```
 flask run
 ```
+
+# Features
+
++ Register/Login
++ Creating, updating and deleting posts
+
+To view specific user's profile visit: /id<user-id>
+
+To view all publicated posts: /blog (debug features)
