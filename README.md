@@ -1,6 +1,8 @@
 # Installation
 
+```
 pytho3 -m pip install Flask
+```
 
 # Usage
 ### For Linux and Mac:
