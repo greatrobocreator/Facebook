@@ -37,6 +37,6 @@ flask run
 + Register/Login
 + Creating, updating and deleting posts
 
-To view specific user's profile visit: /id<user-id>
+To view specific user's profile visit: /id\<user-id\>
 
 To view all publicated posts: /blog (debug features)
