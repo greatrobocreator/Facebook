@@ -10,7 +10,6 @@ pytho3 -m pip requirements.txt
 ```
 $ export FLASK_APP=flaskr
 $ export FLASK_ENV=development
-$ flask run
 ```
 
 ### For Windows cmd
@@ -19,7 +18,6 @@ Use set instead of export:
 ```
 > set FLASK_APP=flaskr
 > set FLASK_ENV=development
-> flask run
 ```
 
 After that you need to initialize database:
