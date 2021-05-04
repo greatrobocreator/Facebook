@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}Register{% endblock %}</h1>
+
+  <script>
+
+	/*window.addEventListener("load", function(event) {
+	  var avatar = document.querySelector("#avatar");
+	  avatar.addEventListener("load", function(event) {
+          var scale = Math.min(1.0, 200.0 / this.width);//, 200.0 / this.height);
+		  this.width *= scale;
+	  });
+	});*/
+
+
+    function upload_file(files) {
+      // ****, I killed 6 hours, trying to fix this function
+      //e.preventDefault();
+      var url = "{{ url_for('upload_image') }}";
+      var data = new FormData();
+      data.append('file', files[0]);
+	  
+	  var xhr = new XMLHttpRequest();
+      xhr.open("POST", url, true);
+	  xhr.onreadystatechange = function() {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+	        var avatar = document.querySelector("#avatar");
+			//avatar.removeAttribute("width");
+			avatar.src = xhr.responseText;
+			document.querySelector("#avatarInput").value = xhr.responseText;
+        }
+      };
+      xhr.send(data);
+    };
+  </script>
+{% endblock %}
+
+{% block content %}
+  <div>
+    <label>Avatar</label>
+    <input type=file accept="image/*" name=file onchange="upload_file(this.files);">
+    <img id="avatar" src="{{ request.form['avatar'] }}" width="200">
+  </div>
+  <form method="post">
+    <input type="hidden" name="avatar" id="avatarInput" value="{{ request.form['avatar'] }}" required>
+    <label for="username">Username</label>
+    <input name="username" id="username" value="{{ request.form['username'] }}" required>
+    <label for="password">Password</label>
+    <input type="password" name="password" id="password" value="{{ request.form['password'] }}" required>
+
+    <label for="about">About you</label>
+    <textarea name="about" id="about" required>{{ request.form['about'] }}</textarea>
+    <input type="submit" value="Register">
+  </form>
+
+{% endblock %}
