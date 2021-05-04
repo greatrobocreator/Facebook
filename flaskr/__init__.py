@@ -2,6 +2,8 @@ import os
 
 from flask import Flask
 
+UPLOAD_FOLDER = 'uploads'
+
 
 def create_app(test_config=None):
     # create and configure the app
@@ -18,6 +20,10 @@ def create_app(test_config=None):
         # load the test config if passed in
         app.config.from_mapping(test_config)
 
+    app.config['UPLOAD_FOLDER'] = os.path.join(app.instance_path, UPLOAD_FOLDER)
+
+    if not os.path.exists(app.config['UPLOAD_FOLDER']):
+        os.mkdir(app.config['UPLOAD_FOLDER'])
     # ensure the instance folder exists
     try:
         os.makedirs(app.instance_path)
@@ -35,8 +41,15 @@ def create_app(test_config=None):
     from . import auth
     app.register_blueprint(auth.bp)
 
+    from . import user
+    app.register_blueprint(user.bp)
+    app.add_url_rule('/', endpoint='index')
+
     from . import blog
     app.register_blueprint(blog.bp)
-    app.add_url_rule('/', endpoint='index')
+
+    from . import uploads
+    app.register_blueprint(uploads.bp)
+    app.add_url_rule('/upload_image', endpoint='upload_image')
 
     return app

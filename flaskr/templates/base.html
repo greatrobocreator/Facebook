@@ -1,8 +1,9 @@
 <!doctype html>
-<title>{% block title %}{% endblock %} - Flaskr</title>
+<title>{% block title %}{% endblock %} - Facebook</title>
 <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <nav>
-  <h1>Flaskr</h1>
+  <h1>Facebook</h1>
   <ul>
     {% if g.user %}
       <li><span>{{ g.user['username'] }}</span>
