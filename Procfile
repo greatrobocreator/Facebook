@@ -1,1 +1,1 @@
-web: flask init-db; flask run
+web: flask init-db; flask run --host=0.0.0.0
