@@ -42,4 +42,5 @@ To view all publicated posts: /blog (debug features)
 # Heroku
 
 I have published this app on heroku: http://mipt-facebook.herokuapp.com/
-You can't write me now, but I'll wait for the posts :)
+
+You can't write me (id1) now, but I'll wait for the posts :)
